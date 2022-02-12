@@ -41,8 +41,9 @@ class UserProfileSerializer(serializers.ModelSerializer):
 
 class ProfileFeedItemSerializer(serializers.ModelSerializer):
     """Serializes profile feed items"""
+    file_uploaded = serializers.FileField()
 
     class Meta:
         model = models.ProfileFeedItem
-        fields = ('id', 'user_profile', 'status_text', 'created_on')
+        fields = ('id', 'user_profile', 'status_text', 'file_uploaded', 'created_on')
         extra_kwargs = {'user_profile': {'read_only': True}}

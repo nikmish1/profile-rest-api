@@ -33,9 +33,6 @@ class UserProfileManager(BaseUserManager):
 
 
 
-
-
-
 class UserProfile(AbstractBaseUser, PermissionsMixin): #all of the functionality of default user
     """Database model for users in the system"""
     email = models.EmailField(max_length=255, unique=True)
@@ -60,6 +57,11 @@ class UserProfile(AbstractBaseUser, PermissionsMixin): #all of the functionality
         """Return string representation of our user"""
         return self.email
 
+# def user_directory_path(instance, filename):
+#     print("instance", instance)
+#     # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
+#     return 'documents/%Y/%m/%d/user_{0}/{1}'.format(instance.user.id, filename)
+
 
 class ProfileFeedItem(models.Model):
      """Profile status update"""
@@ -67,12 +69,17 @@ class ProfileFeedItem(models.Model):
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE
      )
+
      status_text = models.CharField(max_length=255)
      created_on = models.DateTimeField(auto_now_add=True)
+     file_uploaded = models.FileField(blank=True, default='', upload_to='documents/%Y/%m/%d/')
+
 
      def __str__(self):
          """Return the model as a string"""
          return self.status_text
+
+
 
 
 

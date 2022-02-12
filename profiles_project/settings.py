@@ -119,6 +119,17 @@ USE_L10N = True
 
 USE_TZ = True
 
+AWS_ACCESS_KEY_ID = 'AKIAXGX2ULRL7GODIW7D'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'user-receipts-store'
+AWS_S3_SIGNATURE_VERSION = 's3v4'
+AWS_S3_REGION_NAME = 'ap-south-1'
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+AWS_S3_VERIFY = True
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_QUERYSTRING_AUTH=False
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
@@ -128,3 +139,9 @@ STATIC_URL = '/static/'
 AUTH_USER_MODEL = 'profiles_api.UserProfile'
 
 STATIC_ROOT = 'static/'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+# AWS-secret_s3= xRT8uyd4QTZRkqoW3o1Nb0ezXE4087eELdPAG6Eu
